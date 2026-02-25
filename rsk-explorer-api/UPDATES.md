@@ -24,7 +24,7 @@ node dist/dbPatches/tokenData.js
 
 ```
 
-## Requisites
+## Prerequisites
 
  [MongoDB Tools](https://docs.mongodb.com/manual/tutorial/backup-and-restore-tools/)
 

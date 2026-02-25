@@ -8,7 +8,7 @@ const endpoints = {
 const fixtures = {
   testnet: {
     addressesForGetVerificationEndpoint: [
-      // Requisites:
+      // Requirements:
       // Store blocks 4314259, 4314394
       // Verify contracts
       '0xc8069f0ecaad27b408bc59632644eba6aa249dc6',
