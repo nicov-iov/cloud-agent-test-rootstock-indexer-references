@@ -1,0 +1,21 @@
+---
+description: Consulta el índice LLM para navegar el monorepo y delegar a subagentes
+globs: *
+---
+
+# Guía de Navegación del Repositorio
+
+Al trabajar en este proyecto, **consulta primero** `.cursor/llm-index.md` para:
+
+1. **Entender la estructura** - Monorepo RSK con 5 paquetes (nod3, rsk-utils, rsk-js-cli, rsk-contract-parser, rsk-explorer-api)
+2. **Encontrar archivos** - Ubicaciones de config, tests, entry points
+3. **Delegar tareas** - Usa los subagentes en `.cursor/agents/` para dominio específico:
+   - `nod3` → RPC, comunicación con nodo
+   - `rsk-utils` → Checksums, direcciones
+   - `rsk-js-cli` → CLI
+   - `rsk-contract-parser` → Contratos, eventos, ABIs
+   - `rsk-explorer-api` → API, indexación, DB
+   - `rsk-contract-verifier` → Verificación contratos (externo)
+   - `rskj` → Nodo RSK (externo)
+
+El llm-index contiene la tabla de paquetes, flujo de dependencias, comandos útiles y referencias a repos externos.

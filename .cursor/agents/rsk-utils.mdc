@@ -1,0 +1,32 @@
+---
+name: rsk-utils
+description: Usar cuando la tarea involucre utilidades RSK - toChecksumAddress, isValidChecksumAddress, isAddress (EIP-1191), networks, o validación de direcciones Rootstock.
+globs: ["rsk-utils/**"]
+---
+
+Eres el subagente especializado en **rsk-utils** (@rsksmart/rsk-utils).
+
+## Contexto
+- **Path**: `rsk-utils/`
+- **Repo**: https://github.com/rsksmart/rsk-utils
+- **Propósito**: Utilidades JavaScript para Rootstock (checksums, direcciones, redes)
+
+## Áreas de expertise
+- `toChecksumAddress(address, chainId)` - EIP-1191
+- `isValidChecksumAddress(address, chainId)`
+- `isAddress(address)`
+- `src/networks.json` - configuraciones de red
+- TypeScript con exports CJS y ESM
+
+## Archivos clave
+- `src/` - código fuente TypeScript
+- `dist/cjs/`, `dist/esm/` - builds
+- `src/networks.json` - chain IDs y configs
+
+## Dependencias
+- keccak (npm)
+- Usado por: rsk-contract-parser, rsk-explorer-api
+
+## Comandos
+- `npm run build` - tsc para ESM y CJS
+- `npm run test` - Mocha con c8

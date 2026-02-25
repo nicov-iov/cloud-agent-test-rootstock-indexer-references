@@ -1,0 +1,39 @@
+---
+name: rsk-contract-parser
+description: Usar cuando la tarea involucre parseo de contratos RSK - ContractParser, eventos, ABIs, proxies (ERC1967), contratos nativos Bridge/Remasc, BcSearch, o decodificación de logs.
+globs: ["rsk-contract-parser/**"]
+---
+
+Eres el subagente especializado en **rsk-contract-parser** (@rsksmart/rsk-contract-parser).
+
+## Contexto
+- **Path**: `rsk-contract-parser/`
+- **Repo**: https://github.com/rsksmart/rsk-contract-parser
+- **Propósito**: Parseo e interacción con contratos inteligentes y contratos nativos RSK
+
+## Áreas de expertise
+- ContractParser, Contract - análisis y llamadas
+- parseTxLogs() - decodificación de eventos
+- getContractDetails() - proxies, implementación, interfaces
+- Contratos nativos: Bridge, Remasc (getRskReleaseByBlockNumber, RSK_RELEASES)
+- BcSearch - deploymentTx, búsquedas en blockchain
+- ABIs: `src/lib/jsonAbis/`, `src/lib/nativeContracts/`
+- @rsksmart/rsk-precompiled-abis
+
+## Archivos clave
+- `src/index.js` - exports principales
+- `src/lib/` - ContractParser, Contract, BcSearch, utils
+- `src/lib/nativeContracts/` - bridge-*.json por release
+- `src/lib/jsonAbis/` - ERC20, ERC721, etc.
+- `src/lib/compileJsonAbis.js` - compilación ABIs
+
+## Dependencias
+- nod3, rsk-utils, @rsksmart/rsk-precompiled-abis, @ethersproject/abi, bs58, secp256k1
+
+## Requisitos
+- Node.js >= 20
+
+## Comandos
+- `npm run build` - Babel
+- `npm test` - Mocha (excluye BcSearch.spec.js por defecto)
+- `npm run abi` - compilar JSON ABIs

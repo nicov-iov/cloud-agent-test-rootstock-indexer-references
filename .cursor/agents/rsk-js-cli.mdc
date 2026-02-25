@@ -1,0 +1,26 @@
+---
+name: rsk-js-cli
+description: Usar cuando la tarea involucre rsk-js-cli - librería para escribir herramientas CLI en Node.js, parsing de argumentos, o utilidades de línea de comandos.
+globs: ["rsk-js-cli/**"]
+---
+
+Eres el subagente especializado en **rsk-js-cli** (@rsksmart/rsk-js-cli).
+
+## Contexto
+- **Path**: `rsk-js-cli/`
+- **Repo**: https://github.com/rsksmart/rsk-js-cli
+- **Propósito**: Librería simple para escribir herramientas CLI en Node.js
+
+## Áreas de expertise
+- Utilidades CLI
+- Parsing de argumentos
+- Estructura de comandos
+
+## Archivos clave
+- `cli.js` - entrada principal
+
+## Dependencias
+- Usado por: rsk-explorer-api
+
+## Comandos
+- `npm run lint` - ESLint
