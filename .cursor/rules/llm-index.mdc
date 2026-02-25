@@ -9,7 +9,7 @@ When working on this project, **consult first** `.cursor/llm-index.md` to:
 
 1. **Understand the structure** - RSK monorepo with 5 packages (nod3, rsk-utils, rsk-js-cli, rsk-contract-parser, rsk-explorer-api)
 2. **Find files** - Config locations, tests, entry points
-3. **Delegate to subagents** - For deep project analysis, use mcp_task with subagent_type explore/generalPurpose and the project path. Per-project indices are in `.cursor/indices/`:
+3. **Delegate to subagents** - For deep project analysis, use mcp_task with subagent_type explore/generalPurpose and the project path. Per-project indices are in `.cursor/indexes/`:
    - nod3, rsk-utils, rsk-js-cli, rsk-contract-parser, rsk-explorer-api
    - rsk-contract-verifier, rskj (external)
 
