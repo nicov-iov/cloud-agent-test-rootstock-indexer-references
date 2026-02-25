@@ -1,15 +1,15 @@
-# rsk-contract-verifier — LLM Index (repo externo)
+# rsk-contract-verifier — LLM Index (external repo)
 
-> Referencia para el servicio de verificación de contratos. Repo externo: https://github.com/rsksmart/rsk-contract-verifier
+> Reference for the contract verification service. External repo: https://github.com/rsksmart/rsk-contract-verifier
 
-## Uso en el monorepo
+## Usage in the monorepo
 
-Integrado como módulo opcional en **rsk-explorer-api**.
+Integrated as an optional module in **rsk-explorer-api**.
 
-### Habilitación
+### Enabling
 
-1. `api.allowUserEvents = true` en config
-2. Configurar URL del verifier:
+1. Set `api.allowUserEvents = true` in config
+2. Configure verifier URL:
 
 ```javascript
 api: {
@@ -19,12 +19,12 @@ api: {
 }
 ```
 
-### Archivos relacionados
+### Related files
 
-- `rsk-explorer-api/src/lib/defaultConfig.js` – config base
-- `rsk-explorer-api/README.md` – instrucciones de configuración
-- Módulos API: ContractVerification, VerificationResults
+- `rsk-explorer-api/src/lib/defaultConfig.js` – base config
+- `rsk-explorer-api/README.md` – setup instructions
+- API modules: ContractVerification, VerificationResults
 
-## Nota
+## Note
 
-Este repo NO está en el monorepo. Para cambios en el verifier, trabajar en el repo externo.
+This repo is NOT in the monorepo. For changes to the verifier, work in the external repo.

@@ -1,37 +1,37 @@
 # LLM Index - RSK Blockchain Tools Monorepo
 
-> Índice de referencia para agentes. Usa este documento para navegar el repositorio. Para análisis profundo de un proyecto, delega a un subagente (mcp_task) con el path correspondiente y consulta el índice específico.
+> Reference index for agents. Use this document to navigate the repository. For deep analysis of a project, delegate to a subagent (mcp_task) with the corresponding path and consult the specific index.
 
-## Resumen del Proyecto
+## Project Summary
 
-Monorepo de herramientas **Rootstock (RSK)** - blockchain sidechain de Bitcoin. Stack: JavaScript/TypeScript, Node.js ≥16 (≥20 para rsk-contract-parser).
+Monorepo of **Rootstock (RSK)** tools - Bitcoin sidechain. Stack: JavaScript/TypeScript, Node.js ≥16 (≥20 for rsk-contract-parser).
 
-## Estructura de Paquetes
+## Package Structure
 
 ```
 workspace/
-├── nod3/                    # Cliente RPC base (Ethereum/RSK)
-├── rsk-utils/               # Utilidades JS (checksums, redes)
-├── rsk-js-cli/              # Librería CLI
-├── rsk-contract-parser/     # Parser de contratos y eventos
-└── rsk-explorer-api/        # API REST/WS e indexador de bloques
+├── nod3/                    # Base RPC client (Ethereum/RSK)
+├── rsk-utils/               # JS utilities (checksums, networks)
+├── rsk-js-cli/              # CLI library
+├── rsk-contract-parser/     # Contract and event parser
+└── rsk-explorer-api/        # REST/WS API and block indexer
 ```
 
-## Índices por Sub-referencia
+## Indices by Sub-reference
 
-Cada proyecto tiene su propio índice. **Para análisis de un proyecto, usa mcp_task con subagent_type explorar/generalPurpose y el path del proyecto.**
+Each project has its own index. **For project analysis, use mcp_task with subagent_type explore/generalPurpose and the project path.**
 
-| Proyecto | Índice | Path | Delegar a subagente para |
-|----------|--------|------|--------------------------|
+| Project | Index | Path | Delegate to subagent for |
+|---------|-------|------|--------------------------|
 | **nod3** | [.cursor/indices/nod3.md](.cursor/indices/nod3.md) | `nod3/` | RPC, eth/net/web3/txpool/debug/trace |
-| **rsk-utils** | [.cursor/indices/rsk-utils.md](.cursor/indices/rsk-utils.md) | `rsk-utils/` | Checksums, direcciones, EIP-1191 |
-| **rsk-js-cli** | [.cursor/indices/rsk-js-cli.md](.cursor/indices/rsk-js-cli.md) | `rsk-js-cli/` | CLI, argumentos, logging |
-| **rsk-contract-parser** | [.cursor/indices/rsk-contract-parser.md](.cursor/indices/rsk-contract-parser.md) | `rsk-contract-parser/` | Contratos, eventos, ABIs, Bridge, Remasc |
-| **rsk-explorer-api** | [.cursor/indices/rsk-explorer-api.md](.cursor/indices/rsk-explorer-api.md) | `rsk-explorer-api/` | API, indexación, PostgreSQL, config |
-| **rsk-contract-verifier** | [.cursor/indices/rsk-contract-verifier.md](.cursor/indices/rsk-contract-verifier.md) | (externo) | Verificación contratos |
-| **rskj** | [.cursor/indices/rskj.md](.cursor/indices/rskj.md) | (externo) | Nodo RSK, configuración |
+| **rsk-utils** | [.cursor/indices/rsk-utils.md](.cursor/indices/rsk-utils.md) | `rsk-utils/` | Checksums, addresses, EIP-1191 |
+| **rsk-js-cli** | [.cursor/indices/rsk-js-cli.md](.cursor/indices/rsk-js-cli.md) | `rsk-js-cli/` | CLI, arguments, logging |
+| **rsk-contract-parser** | [.cursor/indices/rsk-contract-parser.md](.cursor/indices/rsk-contract-parser.md) | `rsk-contract-parser/` | Contracts, events, ABIs, Bridge, Remasc |
+| **rsk-explorer-api** | [.cursor/indices/rsk-explorer-api.md](.cursor/indices/rsk-explorer-api.md) | `rsk-explorer-api/` | API, indexing, PostgreSQL, config |
+| **rsk-contract-verifier** | [.cursor/indices/rsk-contract-verifier.md](.cursor/indices/rsk-contract-verifier.md) | (external) | Contract verification |
+| **rskj** | [.cursor/indices/rskj.md](.cursor/indices/rskj.md) | (external) | RSK node, configuration |
 
-## Flujo de Dependencias
+## Dependency Flow
 
 ```
 nod3 (base RPC)
@@ -41,31 +41,31 @@ rsk-utils ← rsk-contract-parser
 rsk-js-cli ← rsk-explorer-api
 ```
 
-## Delegación a Subagentes
+## Delegating to Subagents
 
-Para alivianar la carga del agente principal, **delega a subagentes** cuando el análisis sea específico de un proyecto:
+To lighten the main agent's load, **delegate to subagents** when analysis is project-specific:
 
 ```text
-mcp_task: subagent_type=explore o generalPurpose
-prompt: "Analiza [path] según [.cursor/indices/[proyecto].md]. Tarea: ..."
+mcp_task: subagent_type=explore or generalPurpose
+prompt: "Analyze [path] per [.cursor/indices/[project].md]. Task: ..."
 ```
 
-Ejemplo: análisis de nod3 → `mcp_task` con path `nod3/` y referencia al índice de nod3.
+Example: nod3 analysis → `mcp_task` with path `nod3/` and reference to nod3 index.
 
-## Ubicaciones Clave (globales)
+## Key Locations (global)
 
 - **Config**: `rsk-explorer-api/src/lib/defaultConfig.js`, `config-example.json`
 - **DB**: `rsk-explorer-api/prisma/schema.prisma`
 - **API docs**: `rsk-explorer-api/doc/api.md`, `rsk-explorer-api/public/swagger.json`
 - **Docker**: `rsk-explorer-api/Dockerfile`, `dockerized/`
 
-## Comandos Útiles
+## Useful Commands
 
 ```bash
 cd <package> && npm run build
 cd <package> && npm test
 ```
 
-## Licencia
+## License
 
-MIT para todos los paquetes.
+MIT for all packages.

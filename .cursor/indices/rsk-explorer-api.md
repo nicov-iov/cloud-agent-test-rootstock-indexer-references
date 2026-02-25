@@ -84,10 +84,10 @@ rsk-explorer-api/
 | Command | Description |
 |---------|-------------|
 | `npm run build` | Babel + api-docs |
-| `npm run start-blocks` | Indexador |
-| `npm run start-api` | Servidor API |
-| `npm run dev` | Desarrollo |
-| `npx prisma generate` | Cliente Prisma |
+| `npm run start-blocks` | Block indexer |
+| `npm run start-api` | API server |
+| `npm run dev` | Development |
+| `npx prisma generate` | Prisma client |
 
 ---
 

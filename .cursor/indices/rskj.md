@@ -1,28 +1,28 @@
-# rskj — LLM Index (repo externo)
+# rskj — LLM Index (external repo)
 
-> Referencia para el nodo RSK (Java). Repo externo: https://github.com/rsksmart/rskj
+> Reference for the RSK node (Java). External repo: https://github.com/rsksmart/rskj
 
-## Uso en el monorepo
+## Usage in the monorepo
 
-- **nod3**: Cliente RPC para comunicarse con rskj
-- **rsk-explorer-api**: Requiere nodo rskj >= 2.0.1
-- **Docker**: PPA `ppa:rsksmart/rskj` en `rsk-explorer-api/dockerized/rsk-node/Dockerfile`
-- **CI nod3**: `.circleci/config.yml` clona y compila rskj para tests
+- **nod3**: RPC client to communicate with rskj
+- **rsk-explorer-api**: Requires rskj node >= 2.0.1
+- **Docker**: PPA `ppa:rsksmart/rskj` in `rsk-explorer-api/dockerized/rsk-node/Dockerfile`
+- **nod3 CI**: `.circleci/config.yml` clones and compiles rskj for tests
 
-## Módulos RPC requeridos
+## Required RPC modules
 
-Para explorer-api: eth, net, web3, txpool, debug, trace
+For explorer-api: eth, net, web3, txpool, debug, trace
 
-## Workarounds conocidos
+## Known workarounds
 
-- **txpool**: rskj issues #689 – respuestas incorrectas
-- Ver: `nod3/src/modules/txpool.js`, `rsk-explorer-api/src/services/classes/TxPool.js`
+- **txpool**: rskj issues #689 – incorrect responses
+- See: `nod3/src/modules/txpool.js`, `rsk-explorer-api/src/services/classes/TxPool.js`
 
-## Archivos relacionados
+## Related files
 
-- `nod3/.rskj-conf/node.conf` – config para CI
-- `rsk-explorer-api/dockerized/rsk-node/Dockerfile` – imagen Docker
+- `nod3/.rskj-conf/node.conf` – config for CI
+- `rsk-explorer-api/dockerized/rsk-node/Dockerfile` – Docker image
 
-## Nota
+## Note
 
-rskj es el nodo que los paquetes del monorepo consumen vía RPC.
+rskj is the node that monorepo packages consume via RPC.
