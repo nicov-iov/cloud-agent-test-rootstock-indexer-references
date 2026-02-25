@@ -1,0 +1,88 @@
+{
+  "name": "@rsksmart/rsk-utils",
+  "version": "2.0.5",
+  "description": "A collection of JS utility functions for Rootstock",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./dist/esm/index.js",
+        "types": "./dist/esm/index.d.ts"
+      },
+      "require": {
+        "default": "./dist/cjs/index.js",
+        "types": "./dist/cjs/index.d.ts"
+      }
+    }
+  },
+  "scripts": {
+    "lint": "npx eslint src/*.ts --quiet",
+    "test:node": "npx c8 mocha 'test/**/*.ts'",
+    "test": "npm run test:node",
+    "doc": "node ./.doc/makeDoc.js > Documentation.md",
+    "build:esm": "tsc --project tsconfig.dist.esm.json && echo '{\"type\": \"module\"}' > dist/esm/package.json",
+    "build:cjs": "tsc --project tsconfig.dist.cjs.json && echo '{\"type\": \"commonjs\"}' > dist/cjs/package.json",
+    "build": "npm run build:esm && npm run build:cjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsksmart/rsk-utils.git"
+  },
+  "keywords": [
+    "rsk",
+    "utils",
+    "rootstock"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rsksmart/rsk-utils/issues"
+  },
+  "homepage": "https://github.com/rsksmart/rsk-utils#readme",
+  "dependencies": {
+    "keccak": "^3.0.4"
+  },
+  "devDependencies": {
+    "@types/bn.js": "^5.1.6",
+    "@types/chai": "^5.0.1",
+    "@types/keccak": "^3.0.5",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.19.1",
+    "@typescript-eslint/parser": "^8.19.1",
+    "c8": "^10.1.3",
+    "chai": "^5.1.2",
+    "eslint": "^9.17.0",
+    "mocha": "^11.0.1",
+    "source-map-support": "^0.5.21",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "all": true,
+    "exclude": [
+      "test/**/*.ts",
+      "**/*.spec.ts",
+      "**/*.d.ts",
+      "node_modules",
+      "dist"
+    ],
+    "reporter": [
+      "html",
+      "text"
+    ],
+    "sourceMap": true,
+    "instrument": true
+  }
+}

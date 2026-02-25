@@ -1,0 +1,28 @@
+{
+  "source": {
+    "protocol": "http",
+    "node": "localhost",
+    "port": 4444
+  },
+  "db": {
+    "server": "localhost",
+    "port": 27017,
+    "database": "explorer_db"
+  },
+  "api": {
+    "address": "localhost",
+    "port": 3003,
+    "lastBlocks": 30,
+    "enableMetrics": true,
+    "metricsPort": 4000,
+    "allowUserEvents": true,
+    "exposeDoc": false,
+    "contractVerifier": {
+      "url": "ws://localhost:3008"
+    }
+  },
+  "blocks": {
+    "enableMetrics": true,
+    "metricsPort": 4001
+  }
+}

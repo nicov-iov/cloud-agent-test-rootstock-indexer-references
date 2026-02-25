@@ -1,0 +1,14 @@
+{
+  "sourceMaps": false,
+  "retainLines": true,
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "20"
+        }
+      }
+    ]
+  ]
+}

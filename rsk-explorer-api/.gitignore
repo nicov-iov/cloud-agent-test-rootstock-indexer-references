@@ -1,0 +1,17 @@
+node_modules
+/config.json
+/initial-config.json
+.vscode
+.node-xmlhttprequest-*
+src/tmp
+tmp
+coverage
+.nyc_output
+dist
+services.output.log
+package-lock.json
+logs
+/.idea
+public/swagger.json
+
+.env
