@@ -21,15 +21,15 @@ workspace/
 
 Each project has its own index. **For project analysis, use mcp_task with subagent_type explore/generalPurpose and the project path.**
 
-| Project | Index | Path | Delegate to subagent for |
-|---------|-------|------|--------------------------|
-| **nod3** | [.cursor/indexes/nod3.md](.cursor/indexes/nod3.md) | `nod3/` | RPC, eth/net/web3/txpool/debug/trace |
-| **rsk-utils** | [.cursor/indexes/rsk-utils.md](.cursor/indexes/rsk-utils.md) | `rsk-utils/` | Checksums, addresses, EIP-1191 |
-| **rsk-js-cli** | [.cursor/indexes/rsk-js-cli.md](.cursor/indexes/rsk-js-cli.md) | `rsk-js-cli/` | CLI, arguments, logging |
-| **rsk-contract-parser** | [.cursor/indexes/rsk-contract-parser.md](.cursor/indexes/rsk-contract-parser.md) | `rsk-contract-parser/` | Contracts, events, ABIs, Bridge, Remasc |
-| **rsk-explorer-api** | [.cursor/indexes/rsk-explorer-api.md](.cursor/indexes/rsk-explorer-api.md) | `rsk-explorer-api/` | API, indexing, PostgreSQL, config |
-| **rsk-contract-verifier** | [.cursor/indexes/rsk-contract-verifier.md](.cursor/indexes/rsk-contract-verifier.md) | (external) | Contract verification |
-| **rskj** | [.cursor/indexes/rskj.md](.cursor/indexes/rskj.md) | (external) | RSK node, configuration |
+| Project | Index | Path | npm | Delegate for |
+|---------|-------|------|-----|--------------|
+| **nod3** | [nod3.md](.cursor/indexes/nod3.md) | `nod3/` | `@rsksmart/nod3` | RPC, eth/net/web3/txpool/debug/trace |
+| **rsk-utils** | [rsk-utils.md](.cursor/indexes/rsk-utils.md) | `rsk-utils/` | `@rsksmart/rsk-utils` | Checksums, addresses, EIP-1191 |
+| **rsk-js-cli** | [rsk-js-cli.md](.cursor/indexes/rsk-js-cli.md) | `rsk-js-cli/` | `@rsksmart/rsk-js-cli` | CLI, arguments, logging |
+| **rsk-contract-parser** | [rsk-contract-parser.md](.cursor/indexes/rsk-contract-parser.md) | `rsk-contract-parser/` | `@rsksmart/rsk-contract-parser` | Contracts, events, ABIs, Bridge, Remasc |
+| **rsk-explorer-api** | [rsk-explorer-api.md](.cursor/indexes/rsk-explorer-api.md) | `rsk-explorer-api/` | — | API, indexing, PostgreSQL, config |
+| **rsk-contract-verifier** | [rsk-contract-verifier.md](.cursor/indexes/rsk-contract-verifier.md) | (external) | — | Contract verification |
+| **rskj** | [rskj.md](.cursor/indexes/rskj.md) | (external) | — | RSK node, configuration |
 
 ## Dependency Flow
 
@@ -47,7 +47,7 @@ To lighten the main agent's load, **delegate to subagents** when analysis is pro
 
 ```text
 mcp_task: subagent_type=explore or generalPurpose
-prompt: "Analyze [path] per [.cursor/indexes/[project].md]. Task: ..."
+prompt: "Analyze [path] using [.cursor/indexes/[project].md] as reference. Task: ..."
 ```
 
 Example: nod3 analysis → `mcp_task` with path `nod3/` and reference to nod3 index.

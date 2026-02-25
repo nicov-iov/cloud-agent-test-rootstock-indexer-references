@@ -77,3 +77,5 @@ Bridge ABIs per RSK release in `bridgeAbi.js` (orchid → reed).
 ## Dependencies
 
 - nod3, @rsksmart/rsk-precompiled-abis, rsk-utils, @ethersproject/abi, bs58, secp256k1
+
+**Monorepo deps:** [nod3](./nod3.md), [rsk-utils](./rsk-utils.md)

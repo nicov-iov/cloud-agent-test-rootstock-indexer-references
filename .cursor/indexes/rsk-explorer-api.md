@@ -100,3 +100,5 @@ rsk-explorer-api/
 | Config defaults | `src/lib/defaultConfig.js` |
 | Block indexing | `src/services/classes/Block.js` |
 | API docs | `doc/api.md`, `public/swagger.json` |
+
+**Monorepo deps:** [nod3](./nod3.md), [rsk-contract-parser](./rsk-contract-parser.md), [rsk-js-cli](./rsk-js-cli.md), [rsk-utils](./rsk-utils.md)
