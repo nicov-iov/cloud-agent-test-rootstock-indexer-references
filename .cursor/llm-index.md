@@ -1,6 +1,6 @@
 # LLM Index - RSK Blockchain Tools Monorepo
 
-> Índice de referencia para agentes. Usa este documento para navegar rápidamente el repositorio y delegar tareas a los subagentes especializados.
+> Índice de referencia para agentes. Usa este documento para navegar el repositorio. Para análisis profundo de un proyecto, delega a un subagente (mcp_task) con el path correspondiente y consulta el índice específico.
 
 ## Resumen del Proyecto
 
@@ -17,6 +17,20 @@ workspace/
 └── rsk-explorer-api/        # API REST/WS e indexador de bloques
 ```
 
+## Índices por Sub-referencia
+
+Cada proyecto tiene su propio índice. **Para análisis de un proyecto, usa mcp_task con subagent_type explorar/generalPurpose y el path del proyecto.**
+
+| Proyecto | Índice | Path | Delegar a subagente para |
+|----------|--------|------|--------------------------|
+| **nod3** | [.cursor/indices/nod3.md](.cursor/indices/nod3.md) | `nod3/` | RPC, eth/net/web3/txpool/debug/trace |
+| **rsk-utils** | [.cursor/indices/rsk-utils.md](.cursor/indices/rsk-utils.md) | `rsk-utils/` | Checksums, direcciones, EIP-1191 |
+| **rsk-js-cli** | [.cursor/indices/rsk-js-cli.md](.cursor/indices/rsk-js-cli.md) | `rsk-js-cli/` | CLI, argumentos, logging |
+| **rsk-contract-parser** | [.cursor/indices/rsk-contract-parser.md](.cursor/indices/rsk-contract-parser.md) | `rsk-contract-parser/` | Contratos, eventos, ABIs, Bridge, Remasc |
+| **rsk-explorer-api** | [.cursor/indices/rsk-explorer-api.md](.cursor/indices/rsk-explorer-api.md) | `rsk-explorer-api/` | API, indexación, PostgreSQL, config |
+| **rsk-contract-verifier** | [.cursor/indices/rsk-contract-verifier.md](.cursor/indices/rsk-contract-verifier.md) | (externo) | Verificación contratos |
+| **rskj** | [.cursor/indices/rskj.md](.cursor/indices/rskj.md) | (externo) | Nodo RSK, configuración |
+
 ## Flujo de Dependencias
 
 ```
@@ -27,73 +41,29 @@ rsk-utils ← rsk-contract-parser
 rsk-js-cli ← rsk-explorer-api
 ```
 
-## Referencia Rápida por Paquete
+## Delegación a Subagentes
 
-| Paquete | Path | Repo | Entrada | Descripción |
-|---------|------|------|---------|-------------|
-| **nod3** | `nod3/` | [rsksmart/nod3](https://github.com/rsksmart/nod3) | `dist/index.js` | Cliente RPC mínimo para nodos Ethereum/RSK |
-| **rsk-utils** | `rsk-utils/` | [rsksmart/rsk-utils](https://github.com/rsksmart/rsk-utils) | `dist/cjs/index.js` | Checksums EIP-1191, validación de direcciones |
-| **rsk-js-cli** | `rsk-js-cli/` | [rsksmart/rsk-js-cli](https://github.com/rsksmart/rsk-js-cli) | `cli.js` | Utilidades para herramientas CLI |
-| **rsk-contract-parser** | `rsk-contract-parser/` | [rsksmart/rsk-contract-parser](https://github.com/rsksmart/rsk-contract-parser) | `dist/index.js` | Parseo de contratos, eventos, proxies, Bridge/Remasc |
-| **rsk-explorer-api** | `rsk-explorer-api/` | [rsksmart/rsk-explorer-api](https://github.com/rsksmart/rsk-explorer-api) | `index.js` | API REST/WS, indexador de bloques, PostgreSQL |
+Para alivianar la carga del agente principal, **delega a subagentes** cuando el análisis sea específico de un proyecto:
 
-## Ubicaciones Clave
+```text
+mcp_task: subagent_type=explore o generalPurpose
+prompt: "Analiza [path] según [.cursor/indices/[proyecto].md]. Tarea: ..."
+```
 
-### Configuración
-- **Explorer API**: `rsk-explorer-api/src/lib/defaultConfig.js`, `config-example.json`
-- **Base de datos**: `rsk-explorer-api/prisma/schema.prisma`, `rsk-explorer-api/prisma/rsk-explorer-database.sql`
+Ejemplo: análisis de nod3 → `mcp_task` con path `nod3/` y referencia al índice de nod3.
+
+## Ubicaciones Clave (globales)
+
+- **Config**: `rsk-explorer-api/src/lib/defaultConfig.js`, `config-example.json`
+- **DB**: `rsk-explorer-api/prisma/schema.prisma`
 - **API docs**: `rsk-explorer-api/doc/api.md`, `rsk-explorer-api/public/swagger.json`
-
-### Servicios PM2 (rsk-explorer-api)
-- API: `dist/api/api.pm2.config.js`
-- Blocks: `dist/services/blocks.pm2.config.js`
-
-### Docker
-- `rsk-explorer-api/Dockerfile` - API y blocks
-- `rsk-explorer-api/dockerized/rsk-node/Dockerfile` - Nodo RSK
-- `rsk-explorer-api/dockerized/mongod/Dockerfile` - MongoDB
-
-### Tests
-- `nod3/test/`, `rsk-utils/test/`, `rsk-contract-parser/test/`, `rsk-explorer-api/test/`
-
-## Repos Externos Referenciados
-
-| Repo | URL | Uso |
-|------|-----|-----|
-| **rsk-contract-verifier** | [rsksmart/rsk-contract-verifier](https://github.com/rsksmart/rsk-contract-verifier) | Verificación de contratos (módulo opcional en explorer-api) |
-| **rskj** | [rsksmart/rskj](https://github.com/rsksmart/rskj) | Nodo RSK (PPA, CI en nod3) |
-| **rsk-precompiled-abis** | npm `@rsksmart/rsk-precompiled-abis` | ABIs de contratos nativos RSK |
-
-## Subagentes Disponibles
-
-Para tareas específicas de cada paquete o repo externo, delega al subagente correspondiente:
-
-| Subagente | Cuándo usar |
-|-----------|-------------|
-| `nod3` | RPC, comunicación con nodo, txpool, debug, trace |
-| `rsk-utils` | Checksums, validación direcciones, utilidades RSK |
-| `rsk-js-cli` | Herramientas CLI, argumentos, comandos |
-| `rsk-contract-parser` | Contratos, eventos, ABIs, Bridge, Remasc, proxies |
-| `rsk-explorer-api` | API REST/WS, indexación, PostgreSQL, bloques |
-| `rsk-contract-verifier` | Verificación de contratos Solidity |
-| `rskj` | Nodo RSK, configuración, Java |
+- **Docker**: `rsk-explorer-api/Dockerfile`, `dockerized/`
 
 ## Comandos Útiles
 
 ```bash
-# Build
 cd <package> && npm run build
-
-# Tests
-cd nod3 && npm test
-cd rsk-utils && npm run test
-cd rsk-contract-parser && npm test
-cd rsk-explorer-api && npm test
-
-# Explorer API
-npm run start-blocks   # Indexador
-npm run start-api      # Servidor API
-npm run dev            # Desarrollo
+cd <package> && npm test
 ```
 
 ## Licencia

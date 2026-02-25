@@ -9,13 +9,8 @@ Al trabajar en este proyecto, **consulta primero** `.cursor/llm-index.md` para:
 
 1. **Entender la estructura** - Monorepo RSK con 5 paquetes (nod3, rsk-utils, rsk-js-cli, rsk-contract-parser, rsk-explorer-api)
 2. **Encontrar archivos** - Ubicaciones de config, tests, entry points
-3. **Delegar tareas** - Usa los subagentes en `.cursor/agents/` para dominio específico:
-   - `nod3` → RPC, comunicación con nodo
-   - `rsk-utils` → Checksums, direcciones
-   - `rsk-js-cli` → CLI
-   - `rsk-contract-parser` → Contratos, eventos, ABIs
-   - `rsk-explorer-api` → API, indexación, DB
-   - `rsk-contract-verifier` → Verificación contratos (externo)
-   - `rskj` → Nodo RSK (externo)
+3. **Delegar a subagentes** - Para análisis profundo de un proyecto, usa mcp_task con subagent_type explore/generalPurpose y el path del proyecto. Los índices por proyecto están en `.cursor/indices/`:
+   - nod3, rsk-utils, rsk-js-cli, rsk-contract-parser, rsk-explorer-api
+   - rsk-contract-verifier, rskj (externos)
 
-El llm-index contiene la tabla de paquetes, flujo de dependencias, comandos útiles y referencias a repos externos.
+El llm-index lista todos los sub-índices y cómo delegar tareas para alivianar la carga.
